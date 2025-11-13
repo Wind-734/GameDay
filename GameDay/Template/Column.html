@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>บทความเกี่ยวกับเกม - Game Day</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+      body {
+        font-family: "BBH Sans Bogle", sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        color: #333;
+        line-height: 1.8;
+        margin: 0;
+        padding: 0;
+      }
+      .navbar {
+        background: rgba(0,0,0,0.8) !important;
+        backdrop-filter: blur(10px);
+      }
+      .nav-link {
+        color: rgba(255,255,255,0.8) !important;
+        transition: color 0.3s ease;
+      }
+      .nav-link:hover, .nav-link.active {
+        color: yellow !important;
+        background: RoyalBlue !important;
+        border-radius: 5px;
+      }
+      .hero-blog {
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23667eea" width="1200" height="400"/></svg>');
+        background-size: cover;
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+      }
+      .search-box {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        margin-top: -50px;
+        position: relative;
+        z-index: 10;
+      }
+      .search-input {
+        border-radius: 25px;
+        padding: 12px 20px;
+        border: 2px solid #667eea;
+        font-size: 1.1rem;
+      }
+      .search-input:focus {
+        border-color: #764ba2;
+        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+      }
+      .filter-btn {
+        border-radius: 20px;
+        padding: 8px 20px;
+        margin: 5px;
+        border: 2px solid #667eea;
+        background: white;
+        color: #667eea;
+        transition: all 0.3s ease;
+      }
+      .filter-btn:hover, .filter-btn.active {
+        background: #667eea;
+        color: white;
+        transform: translateY(-2px);
+      }
+      .article-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+      .article-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+      }
+      .article-img {
+        width: 100%;
+        height: 220px;
+        background-size: cover;
+        background-position: center;
+        border-bottom: 3px solid gold;
+        transition: 0.3s ease;
+      }
+      .article-card:hover .article-img::before {
+        opacity: 0.1;
+      }
+      .article-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(255,215,0,0.9);
+        color: #000;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="Index.html">
+          <span style="font-size: 1.5rem;">Game Day</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="Index.html">หน้าหลัก</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="About.html">เกี่ยวกับเรา</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Contact.html">ช่องทางการติดต่อ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="Column.html">บทความเกี่ยวกับเกม</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-blog">
+      <div class="container">
+        <h1 class="display-3 fw-bold mb-3">บทความเกี่ยวกับเกม</h1>
+        <p class="lead">รีวิว ข่าวสาร และบทความน่าสนใจเกี่ยวกับวงการเกม</p>
+      </div>
+    </div>
+
+    <!-- Search Box -->
+    <section class="pb-5">
+      <div class="container">
+        <div class="search-box">
+          <div class="row align-items-center">
+            <div class="col-lg-8 mb-3 mb-lg-0">
+              <input type="text" id="searchInput" class="form-control search-input" placeholder="🔍 ค้นหาบทความ เกม หรือหัวข้อที่สนใจ...">
+            </div>
+            <div class="col-lg-4 text-center">
+              <button class="btn filter-btn active" data-filter="all">ทั้งหมด</button>
+              <button class="btn filter-btn" data-filter="review">รีวิว</button>
+              <button class="btn filter-btn" data-filter="news">ข่าวสาร</button>
+              <button class="btn filter-btn" data-filter="guide">คู่มือ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-4" id="articlesContainer">
+          <!-- Article 1 -->
+          <div class="col-md-6 col-lg-4 article-item" data-category="review" data-title="resident evil revelations รีวิว เกมสยองขวัญ">
+            <div class="card article-card border-0">
+              <div class="position-relative">
+                <div class="article-img" style="background-image: url('picture/RE_Revelations_Header.jpg');"></div>
+                <span class="article-badge">รีวิว</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Resident Evil Revelations - สยองขวัญสุดระทึกบนเรือร้าง</h5>
+                <p class="card-text">รีวิวเกมสยองขวัญสุดคลาสสิก ที่พาคุณไปสำรวจเรือร้างพร้อมไขปริศนาและต่อสู้กับซอมบี้...</p>
+                <span class="badge bg-danger">สยองขวัญ</span>
+                <span class="badge bg-primary">แอคชั่น</span>
+                <p>
+                <br>
+                <a href="#" class="btn btn-outline-secondary btn-sm" onclick="alert('🎮 กำลังอัปเดตบทความเร็วๆนี้'); return false;">อ่านรีวิว</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article 2 -->
+          <div class="col-md-6 col-lg-4 article-item" data-category="review" data-title="Cyberpunk 2077">
+            <div class="card article-card border-0 shadow">
+              <div class="position-relative">
+                <div class="article-img" style="background-image: url('picture/cyberpunk.jpg');"></div>
+                <span class="article-badge">รีวิว</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Cyberpunk 2077</h5>
+                <p class="card-text">Cyberpunk 2077 คือวิดีโอเกมแนวแอ็กชันสวมบทบาทแบบโลกเปิดกว้าง (Open World RPG) ที่พัฒนาโดย CD Projekt Red ผู้สร้างเกมชุด The Witcher ตัวเกมมีฉากหลังอยู่ในเมือง Night City ที่เต็มไปด้วยแสงสีแห่งอนาคต แต่ก็มีความเสื่อมโทรมและอาชญากรรมซุกซ่อนอยู่</p>
+                <span class="badge bg-danger">RPG</span>
+                <span class="badge bg-primary">แอคชั่น</span>
+                <p>
+                <br>
+                <a href="#" class="btn btn-outline-secondary btn-sm" onclick="alert('🎮 กำลังอัปเดตบทความเร็วๆนี้'); return false;">อ่านรีวิว</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article 3 -->
+          <div class="col-md-6 col-lg-4 article-item" data-category="review" data-title="คู่มือเล่นเกม rpg เทคนิค">
+            <div class="card article-card border-0 shadow">
+              <div class="position-relative">
+                <div class="article-img" style="background-image: url('picture/EAFC26.jpg');"></div>
+                <span class="article-badge">รีวิว</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">EA Sports FC 26 (FC 26)</h5>
+                <p class="card-text">เกมฟุตบอลสุดมันส์ ระบบเล่นสมจริง มีทีมจากทั่วโลก</p>
+                <span class="badge bg-info">กีฬา</span>
+                <span class="badge bg-success">ฟุตบอล</span>
+                <div class="mt-3">
+                  <a href="Fc26.html-2.html" class="btn btn-outline-primary btn-sm">อ่านรีวิว</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article 4 -->
+          <div class="col-md-6 col-lg-4 article-item" data-category="review" data-title="elden ring รีวิว เกม rpg">
+            <div class="card article-card border-0 shadow">
+              <div class="position-relative">
+                <div class="article-img" style="background-image: url('picture/vaorant.jpg');"></div>
+                <span class="article-badge">รีวิว</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">VALORANT</h5>
+                <p class="card-text"></strong> เป็นเกมแนว 5v5 Tactical Hero Shooter จากค่าย <strong>Riot Games</strong> เปิดตัวเมื่อ 2 มิถุนายน 2020 
+      โดยผสมผสานระบบการยิงแบบ FPS กับความสามารถเฉพาะตัวของตัวละครที่เรียกว่า <em>Agents</em> อย่างลงตัว 
+      เกมนี้เน้นกลยุทธ์ ความแม่นยำ และการประสานงานเป็นทีม ไม่ใช่แค่ยิงไวแต่ต้องคิดไวด้วย</p>
+                <span class="badge bg-danger">รีวิว</span>
+                <span class="badge bg-success">FPS-Shooting</span>
+                <div class="mt-3">
+                  <a href="Valorant.html" class="btn btn-outline-primary btn-sm">อ่านรีวิว</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article 5 -->
+          <div class="col-md-6 col-lg-4 article-item" data-category="review" data-title="playstation 6 ข่าวสาร ps6">
+            <div class="card article-card border-0 shadow">
+              <div class="position-relative">
+                <div class="article-img" style="background-image: url('picture/pubg1.jpg');"></div>
+                <span class="article-badge">รีวิว</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">PUBG: BATTLEGROUNDS - เพียงหนึ่งเดียวที่ได้ "Chicken Dinner"</h5>
+                 <p>PUBG: BATTLEGROUNDS ไม่ใช่แค่เกม แต่คือปรากฏการณ์ที่บุกเบิกแนวเกม Battle Royale ให้เป็นที่นิยมทั่วโลก บนเวอร์ชัน Steam นั้นมอบประสบการณ์การเล่นที่จริงจัง เน้นกลไกการยิงที่สมจริง (Recoil) และการบริหารจัดการทรัพยากรที่ต้องคิดให้ถี่ถ้วน ผู้เล่น 100 คนจะถูกส่งลงบนเกาะร้าง และต้องหาอาวุธ ยา และยานพาหนะ เพื่อเอาชีวิตรอดจากผู้เล่นคนอื่นและวงล้อมไฟฟ้าที่บีบเข้ามาเรื่อยๆ</p>
+                <span class="badge bg-info">รีวิว</span>
+                <span class="badge bg-primary">Battle Royale</span>
+                <div class="mt-3">
+                  <a href="pubg_page.html" class="btn btn-outline-primary btn-sm">อ่านรีวิว</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article 6 -->
+          <div class="col-md-6 col-lg-4 article-item" data-category="review" data-title="สตรีมเกม youtube twitch คู่มือ">
+            <div class="card article-card border-0 shadow">
+              <div class="position-relative">
+                <div class="article-img" style="background-image: url('picture/fortnite.jpg');"></div>
+                <span class="article-badge">รีวิว</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">FORTNITE: ยิง! เก็บ! สร้าง! เต้น!</h5>
+                <p class="card-text">สุดยอดเกม Battle Royale ที่ไม่เหมือนใคร</p>
+                <span class="badge bg-success">รีวิว</span>
+                <span class="badge bg-danger">Battle Royale</span>
+                <div class="mt-3">
+                  <a href="fortnite_page.html" class="btn btn-outline-primary btn-sm">อ่านรีวิว</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article 7 -->
+          <div class="col-md-6 col-lg-4 article-item" data-category="review" data-title="fifa 24 รีวิว เกมฟุตบอล">
+            <div class="card article-card border-0 shadow">
+              <div class="position-relative">
+                <div class="article-img" style="background-image: url('picture/EAFC26.jpg');"></div>
+                <span class="article-badge">รีวิว</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">EA Sports FC 24 - วิวัฒนาการใหม่ของเกมฟุตบอล</h5>
+                <p class="card-text">รีวิวเกมฟุตบอลที่เปลี่ยนชื่อจาก FIFA พร้อมฟีเจอร์และระบบเกมเพลย์ใหม่...</p>
+                <span class="badge bg-danger">รีวิว</span>
+                <span class="badge bg-info">กีฬา</span>
+                <div class="mt-3">
+                  <a href="Fc26.html-2.html" class="btn btn-outline-primary btn-sm">อ่านรีวิว</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article 8 -->
+          <div class="col-md-6 col-lg-4 article-item" data-category="news" data-title="nintendo switch 2 ข่าว">
+            <div class="card article-card border-0 shadow">
+              <div class="position-relative">
+                <div class="article-img" style="background-image: url('picture/lol.jpg');"></div>
+                <span class="article-badge">ข่าว</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">"League of Legends (LoL)"</h5>
+                <p class="card-text">การมาถึงของราชินี" จะเริ่มใช้งานในวันที่่ <span class="highlight">23 ตุลาคม</span>นี้!</p>
+        <p class="release-date">
+            เตรียมพบกับการเปิดตัวแชมเปี้ยนใหม่และชุดสกินใหม่ "Coven" สุดอลังการ</p>
+                <span class="badge bg-info">ข่าวสาร</span>
+                <div class="mt-3">
+                  <a href="Lol.html" class="btn btn-outline-primary btn-sm">อ่านข่าวสาร</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article 9 -->
+          <div class="col-md-6 col-lg-4 article-item" data-category="guide" data-title="คอมสเปคเล่นเกม build pc">
+            <div class="card article-card border-0 shadow">
+              <div class="position-relative">
+                <div class="article-img" style="background-image: url('picture/Shopee.jpg');"></div>
+                <span class="article-badge">คู่มือ</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Build PC Gaming งบ 30,000 บาท</h5>
+                <p class="card-text">คู่มือการประกอบคอมพิวเตอร์เล่นเกมในงบประมาณ 30,000 บาท พร้อมรายการอุปกรณ์แนะนำ...</p>
+                <span class="badge bg-success">คู่มือ</span>
+                <span class="badge bg-secondary">PC</span>
+                <div class="mt-3">
+                  <a href="#" class="btn btn-outline-secondary btn-sm" onclick="alert('🎮 กำลังอัปเดตบทความเร็วๆนี้'); return false;">อ่านคู่มือ</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+                    <!-- Article 10 -->
+          <div class="col-md-6 col-lg-4 article-item" data-category="news" data-title="คอมสเปคเล่นเกม build pc">
+            <div class="card article-card border-0 shadow">
+              <div class="position-relative">
+                <div class="article-img" style="background-image: url('picture/rov.jpg');"></div>
+                <span class="article-badge">ข่าวสาร</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">RoV (Arena of Valor)</h5>
+               <p class="version">เวอร์ชัน 4.0 "กำเนิดตำนานนักรบ" จะเปิดตัวในวันที่ <span class="highlight">10 พฤศจิกายน</span>นี้!</p>
+                <span class="badge bg-success">ข่าวสาร</span>
+                <span class="badge bg-secondary">Mobile</span>
+                <div class="mt-3">
+                  <a href="Rov.html" class="btn btn-outline-primary btn-sm">อ่านข่าวสาร</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+                    <!-- Article 11 -->
+          <div class="col-md-6 col-lg-4 article-item" data-category="review" data-title="คอมสเปคเล่นเกม build pc">
+            <div class="card article-card border-0 shadow">
+              <div class="position-relative">
+                <div class="article-img" style="background-image: url('picture/Red_Dead_Redemption.jpg');"></div>
+                <span class="article-badge">รีวิว</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Red Dead Redemption</h5>
+                <p class="card-text">Red Dead Redemption เป็นเกมแนวแอ็กชันผจญภัยในโลกเปิด (Open World) ที่พัฒนาโดย Rockstar San Diego และจัดจำหน่ายโดย Rockstar Games ตัวเกมมีเนื้อหาดราม่าในธีมคาวบอยตะวันตกที่มีฉากหลังเป็นช่วงสิ้นสุดยุค Wild West ในปี 1911</p>
+                <span class="badge bg-success">รีวิว</span>
+                <span class="badge bg-secondary">PC</span>
+                <div class="mt-3">
+                  <a href="#" class="btn btn-outline-secondary btn-sm" onclick="alert('🎮 กำลังอัปเดตบทความเร็วๆนี้'); return false;">อ่านรีวิว</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+                    <!-- Article 12 -->
+          <div class="col-md-6 col-lg-4 article-item" data-category="review" data-title="คอมสเปคเล่นเกม build pc">
+            <div class="card article-card border-0 shadow">
+              <div class="position-relative">
+                <div class="article-img" style="background-image: url('picture/the-legend-of-zelda-breath-of-the-wild-switch-spiel-nintendo-eshop-europe-cover.jpg');"></div>
+                <span class="article-badge">รีวิว</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">The Legend of Zelda: Breath of the Wild</h5>
+                <p class="card-text">The Legend of Zelda เป็นซีรีส์วิดีโอเกมแนวแอ็กชันผจญภัยแฟนตาซียอดนิยมที่พัฒนาและจัดจำหน่ายโดย Nintendo ซีรีส์นี้มีตัวละครหลักที่คุ้นเคยกันดี ได้แก่ ฮีโร่ชื่อ "ลิงก์", เจ้าหญิง "เซลด้า" และตัวร้ายหลักอย่าง "กานอน" โดยปกติแล้ว เกมจะดำเนินเรื่องในอาณาจักรไฮรูล (Hyrule) และมีองค์ประกอบการสำรวจ การไขปริศนา และการต่อสู้</p>
+                <span class="badge bg-success">RPG</span>
+                <span class="badge bg-primary">JRPG</span>
+                <div class="mt-3">
+                  <a href="#" class="btn btn-outline-secondary btn-sm" onclick="alert('🎮 กำลังอัปเดตบทความเร็วๆนี้'); return false;">อ่านรีวิว</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+                    <!-- Article 13 -->
+          <div class="col-md-6 col-lg-4 article-item" data-category="review" data-title="คอมสเปคเล่นเกม build pc">
+            <div class="card article-card border-0 shadow">
+              <div class="position-relative">
+                <div class="article-img" style="background-image: url('picture/gta55.jpg');"></div>
+                <span class="article-badge">รีวิว</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Grand Theft Auto V</h5>
+                <p class="card-text">Grand Theft Auto V (GTA V) เป็นเกมแอ็กชันผจญภัยแบบโอเพนเวิลด์ที่พัฒนาโดย Rockstar North และเผยแพร่โดย Rockstar Games วางจำหน่ายครั้งแรกในปี 2013 และยังคงได้รับความนิยมจนถึงปัจจุบัน เกมนี้มีทั้งโหมดผู้เล่นคนเดียวและโหมดผู้เล่นหลายคนออนไลน์ที่เรียกว่า Grand Theft Auto Online</p>
+                <span class="badge bg-success">รีวิว</span>
+                <span class="badge bg-secondary">PC</span>
+                <div class="mt-3">
+                  <a href="#" class="btn btn-outline-secondary btn-sm" onclick="alert('🎮 กำลังอัปเดตบทความเร็วๆนี้'); return false;">อ่านรีวิว</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+                    <!-- Article 14 -->
+          <div class="col-md-6 col-lg-4 article-item" data-category="review" data-title="คอมสเปคเล่นเกม build pc">
+            <div class="card article-card border-0 shadow">
+              <div class="position-relative">
+                <div class="article-img" style="background-image: url('picture/nba.jpg');"></div>
+                <span class="article-badge">รีวิว</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">NBA 2K25</h5>
+                <p class="card-text">เกมบาสเกตบอล ท้าชิงแชมป์ NBA พร้อมโหมดอาชีพที่สมจริง</p>
+                <span class="badge bg-success">รีวิว</span>
+                <span class="badge bg-secondary">PC</span>
+                <div class="mt-3">
+                  <a href="#" class="btn btn-outline-secondary btn-sm" onclick="alert('🎮 กำลังอัปเดตบทความเร็วๆนี้'); return false;">อ่านรีวิว</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+                    <!-- Article 14 -->
+          <div class="col-md-6 col-lg-4 article-item" data-category="news" data-title="คอมสเปคเล่นเกม build pc">
+            <div class="card article-card border-0 shadow">
+              <div class="position-relative">
+                <div class="article-img" style="background-image: url('picture/pubg2.jpg');"></div>
+                <span class="article-badge">ข่าวสาร</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">PUBG Mobile มียอดผู้เ่ลนเกิน 10 ล้านคนในไทยแล้ว</h5>
+                <p class="card-text">PUBG Mobile มียอดผู้เ่ลนเกิน 10 ล้านคนในไทยแล้วเป็นสถิติสูงสุดของเกมมือถือ</p>
+                <span class="badge bg-success">ข่าวสาร</span>
+                <span class="badge bg-secondary">PC</span>
+                <div class="mt-3">
+                  <a href="#" class="btn btn-outline-secondary btn-sm" onclick="alert('🎮 กำลังอัปเดตบทความเร็วๆนี้'); return false;">อ่านข่าวสาร</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+                    <!-- Article 14 -->
+          <div class="col-md-6 col-lg-4 article-item" data-category="guide" data-title="คอมสเปคเล่นเกม build pc">
+            <div class="card article-card border-0 shadow">
+              <div class="position-relative">
+                <div class="article-img" style="background-image: url('picture/Windows-11_Hero-Bloom-Logo.png');"></div>
+                <span class="article-badge">คู่มือ</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">คู่มือการอัพ Window 11</h5>
+                <p class="card-text">คู่มือในการอัพWindow 11 ที่คุณต้องรู้</p>
+                <span class="badge bg-success">คู่มือ</span>
+                <span class="badge bg-secondary">PC</span>
+                <div class="mt-3">
+                  <a href="#" class="btn btn-outline-secondary btn-sm" onclick="alert('🎮 กำลังอัปเดตบทความเร็วๆนี้'); return false;">อ่านคู่มือ</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+                    <!-- Article 14 -->
+          <div class="col-md-6 col-lg-4 article-item" data-category="news" data-title="คอมสเปคเล่นเกม build pc">
+            <div class="card article-card border-0 shadow">
+              <div class="position-relative">
+                <div class="article-img" style="background-image: url('picture/GAxTGS-2025-Banner-1640px-x-720px.png');"></div>
+                <span class="article-badge">ข่าวสาร</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">มาแล้วตารางอีเว้น! Thailand Game Show 2025</h5>
+                <p class="card-text">ตารางอีเว้น! Thailand Game Show 2025 ที่ชาวเกมเมอร์ต้องรู้และห้ามพลาด</p>
+                <span class="badge bg-success">ข่าวสาร</span>
+                <div class="mt-3">
+                  <a href="#" class="btn btn-outline-secondary btn-sm" onclick="alert('🎮 กำลังอัปเดตบทความเร็วๆนี้'); return false;">อ่านข่าวสาร</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+                    <!-- Article 15 -->
+          <div class="col-md-6 col-lg-4 article-item" data-category="review" data-title="คอมสเปคเล่นเกม build pc">
+            <div class="card article-card border-0 shadow">
+              <div class="position-relative">
+                <div class="article-img" style="background-image: url('picture/wwe.jpg');"></div>
+                <span class="article-badge">รีวิว</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">WWE 2K25</h5>
+                <p class="card-text">WWE 2K25 เป็นวิดีโอเกมมวยปล้ำอาชีพที่พัฒนาโดย Visual Concepts และจัดจำหน่ายโดย 2K ซึ่งออกวางจำหน่ายเมื่อวันที่ 14 มีนาคม 2025 สำหรับ PlayStation 4, PlayStation 5, Xbox One, Xbox Series X|S และ PC (Steam) มีการปรับปรุงและเพิ่มเติมฟีเจอร์ใหม่หลายอย่างจากภาคก่อนหน้า</p>
+                <span class="badge bg-success">รีวิว</span>
+                <span class="badge bg-secondary">PC</span>
+                <div class="mt-3">
+                  <a href="#" class="btn btn-outline-secondary btn-sm" onclick="alert('🎮 กำลังอัปเดตบทความเร็วๆนี้'); return false;">อ่านคู่มือ</a>
+                </div>
+              </div>
+            </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      </div>
+    </div>
+        </div>
+  
+
+        <!-- No Results Message -->
+        <div id="noResults" class="text-center text-white py-5" style="display: none;">
+          <h3>😔 ไม่พบบทความที่ค้นหา</h3>
+          <p>ลองค้นหาด้วยคำอื่นหรือเลือกหมวดหมู่อื่นดูครับ</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white text-center py-4">
+      <p class="mb-0">© 2025 Game Day - แนะนำเกมสุดมันส์ | Made with ❤️ for Gamers</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    
+    <script>
+      const searchInput = document.getElementById('searchInput');
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const articleItems = document.querySelectorAll('.article-item');
+      const noResults = document.getElementById('noResults');
+      let currentFilter = 'all';
+
+      // Search functionality
+      searchInput.addEventListener('input', function() {
+        filterArticles();
+      });
+
+      // Filter buttons functionality
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Remove active class from all buttons
+          filterBtns.forEach(b => b.classList.remove('active'));
+          // Add active class to clicked button
+          this.classList.add('active');
+          // Set current filter
+          currentFilter = this.getAttribute('data-filter');
+          // Filter articles
+          filterArticles();
+        });
+      });
+
+      // Filter articles function
+      function filterArticles() {
+        const searchTerm = searchInput.value.toLowerCase();
+        let visibleCount = 0;
+
+        articleItems.forEach(item => {
+          const category = item.getAttribute('data-category');
+          const title = item.getAttribute('data-title').toLowerCase();
+          
+          // Check if item matches search and filter
+          const matchesSearch = title.includes(searchTerm);
+          const matchesFilter = currentFilter === 'all' || category === currentFilter;
+          
+          if (matchesSearch && matchesFilter) {
+            item.style.display = 'block';
+            visibleCount++;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        // Show/hide no results message
+        if (visibleCount === 0) {
+          noResults.style.display = 'block';
+        } else {
+          noResults.style.display = 'none';
+        }
+      }
+    </script>
+  </body>
+</html>

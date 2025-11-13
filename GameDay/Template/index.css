@@ -1,0 +1,79 @@
+  html {
+    scrollbar-gutter: stable;
+    }
+
+     body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        font-weight: 400;
+        font-style: normal;
+      }
+      .hero-section {
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23667eea" width="1200" height="600"/></svg>');
+        background-size: cover;
+        color: white;
+        padding: 100px 0;
+        text-align: center;
+      }
+      .game-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+      }
+      .game-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+      }
+      .game-img {
+        height: 200px;
+        object-fit: cover;
+        width: 100%;
+      }
+      .badge-rating {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(255,215,0,0.9);
+        color: #000;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 20px;
+      }
+      .navbar {
+        background: rgba(0,0,0,0.8) !important;
+        backdrop-filter: blur(10px);
+      }
+      .nav-link {
+        color: rgba(255,255,255,0.8) !important;
+        transition: color 0.3s ease;
+      }
+      .nav-link:hover, .nav-link.active {
+        color: yellow !important;
+        background: RoyalBlue !important;
+        border-radius: 5px;
+      }
+#Facebook:hover {
+  background-color: rgb(23, 89, 213);
+  color: white;
+  border-color: rgb(28, 100, 233);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#Twitter:hover {
+  background-color: black;
+  color: white;
+  border-color: black;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#YouTube:hover {
+  background-color: #ff0000; /* สีแดง */
+  color: white;              /* ตัวอักษรขาว */
+  border-color: #ff0000;     /* ขอบแดงให้เข้ากับพื้นหลัง */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
