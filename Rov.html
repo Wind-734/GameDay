@@ -2,6 +2,9 @@
 <html lang="th">
 <head>
 	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>เวอร์ชัน 4.0 "กำเนิดตำนานนักรบ"</title>
 	<style>
         body {
             line-height: 1.6;
@@ -11,7 +14,7 @@
             color: #1f3a5f;
         }
 		
-	.container {
+	.container-rov {
 		max-width: 800px;
 		margin: 0 auto;
 		background-color: #ffffff; 
@@ -66,10 +69,51 @@
             border-radius: 4px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.8) !important;
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            transition: color 0.3s, background 0.3s;
+            border-radius: 5px;
+            padding: 6px 12px;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: yellow !important;
+            background: royalblue !important;
+        }
 	</style>
 </head>
 <body>
-    <div class="container">
+     <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold " href="index.html"><h3><strong>Game Day</strong></h3></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">หน้าหลัก</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="About.html">เกี่ยวกับเรา</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Contact.html">ช่องทางการติดต่อ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Column.html">บทความเกี่ยกับเกม</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-rov">
         <p class="main">"RoV (Arena of Valor)"</p>
         <p class="version">เวอร์ชัน 4.0 "กำเนิดตำนานนักรบ" จะเปิดตัวในวันที่ <span class="highlight">10 พฤศจิกายน</span>นี้!</p>
         <p class="release-date">
